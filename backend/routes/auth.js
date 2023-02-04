@@ -15,12 +15,12 @@ router.post('/createUser',
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({success, errors: errors.array() });
+      return res.status(400).json({ success, errors: errors.array() });
     }
     try {
       let user = await User.findOne({ email: req.body.email });
       if (user) {
-        return res.status(400).json({success, error: "Sorry,a user with same email already exists" });
+        return res.status(400).json({ success, error: "Sorry,a user with same email already exists" });
       }
       const salt = await bcrypt.genSaltSync(10);
       const secPass = await bcrypt.hash(req.body.password, salt);
@@ -36,8 +36,8 @@ router.post('/createUser',
         }
       }
       const authToken = jwt.sign(data, JWT_SECRET);
-      success=true
-      res.json({success, authToken });
+      success = true
+      res.json({ success, authToken });
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Some error occured")
