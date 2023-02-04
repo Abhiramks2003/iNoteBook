@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
-const mongoURL = "mongodb://localhost:27017/iNoteBook"
+const mongoURL = "mongodb+srv://abhiram2003:Abhiram%40mongodb2023@abhiram.4w9oeou.mongodb.net/iNoteBook?retryWrites=true&w=majority"
 mongoose.set('strictQuery', false);
 const connectToMongo = ()=>{
-    mongoose.connect(mongoURL,()=>{
-        console.log("connected to port 27017");
+   mongoose.connect(mongoURL).then(()=>{
+        console.log("connected to MongoDB");
+    }).catch((error)=>{
+        console.log(error);
     })
-   
 }
 
 module.exports = connectToMongo
