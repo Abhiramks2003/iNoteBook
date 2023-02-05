@@ -4,7 +4,7 @@ const Login = (props) => {
 
     const [credentials, setCredentials] = useState({ email: "", password: "" })
     let navigate = useNavigate();
-    const host = "http://localhost:5000"
+    const host = "https://inotebook-backend-ak5b.onrender.com"
 
     //Submitting the user credentials
     const handleSubmit = async (e) => {
